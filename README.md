@@ -33,3 +33,11 @@ npm run build
 ```sh
 npm run lint
 ```
+
+```sh
+가비아 백그라운드 실행
+nohup java -jar back-0.0.1-SNAPSHOT.jar &
+
+종료
+pkill java
+```
