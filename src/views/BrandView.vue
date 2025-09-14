@@ -38,7 +38,7 @@ const getBrandLisLetters = (brand) => {
     <!-- 브랜드 목록 ----------------------------------->
     <div class="card mb-1 d-none d-md-block text-bg-secondary">
       <div class="row g-0 text-center">
-        <div class="col-md-10">제조사/제품 테스트</div>
+        <div class="col-md-10">제조사/제품</div>
         <div class="col-md-2">바로가기</div>
       </div>
     </div>
