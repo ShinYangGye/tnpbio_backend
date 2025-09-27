@@ -1,7 +1,9 @@
 <script setup>
+import { useRoute } from 'vue-router';
+import CommHeader from './components/comm/CommHeader.vue';
 import CommBanner from './components/comm/CommBanner.vue';
 import CommFooter from './components/comm/CommFooter.vue';
-import CommHeader from './components/comm/CommHeader.vue';
+const route = useRoute();
 </script>
 
 <template>
@@ -11,7 +13,7 @@ import CommHeader from './components/comm/CommHeader.vue';
     <!-- // 공통 헤더 -->
     <main>
       <!-- 공통 배너 -->
-      <CommBanner />
+      <CommBanner v-show="route.name == 'home'" />
       <!-- // 공통 배너 -->
 
       <div class="container marketing">

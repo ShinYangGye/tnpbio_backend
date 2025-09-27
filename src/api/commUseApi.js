@@ -12,4 +12,21 @@ const getBrandLetters = async () => await axiosInterceptor.get(`/brand/letters`)
 // 브랜드 목록 조회
 const getBrandList = async (brand) => await axiosInterceptor.get(`/brand/list/${brand}`);
 
-export { savePrice, getEvents, getBrandLetters, getBrandList };
+// 메뉴 조회
+const getMenus = async () => await axiosInterceptor.get(`/menu/list`);
+
+// 상품 목록 조회
+const getProductList = async (subId) => await axiosInterceptor.get(`/product/list/${subId}`);
+
+// 상품 상세 조회
+const getProductDetail = async (id) => await axiosInterceptor.get(`/product/detail/${id}`);
+
+export {
+  savePrice,
+  getEvents,
+  getBrandLetters,
+  getBrandList,
+  getMenus,
+  getProductList,
+  getProductDetail,
+};

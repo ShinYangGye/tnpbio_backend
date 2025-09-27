@@ -13,14 +13,34 @@ const router = createRouter({
     },
     {
       path: '/product',
-      name: 'product',
-      component: () => import('../views/ProductView.vue'),
+      name: '',
+      component: () => import('../views/ProductLayoutView.vue'),
+      children: [
+        {
+          path: '',
+          name: 'product',
+          component: () => import('../views/ProductHomeView.vue'),
+        },
+        {
+          path: '/product/:subId/list',
+          name: 'product-list',
+          component: () => import('../views/ProductListView.vue'),
+        },
+        {
+          path: '/product/:id/detail',
+          name: 'product-detail',
+          component: () => import('../views/ProductDetailView.vue'),
+        },
+      ],
     },
+    /*
     {
-      path: '/product/:id',
-      name: 'product-detail',
-      component: () => import('../views/ProductDetailView.vue'),
+      path: '/product/:subId/list',
+      name: 'product-list',
+      component: () => import('../views/ProductListView.vue'),
     },
+       */
+
     {
       path: '/brand',
       name: 'brand',
