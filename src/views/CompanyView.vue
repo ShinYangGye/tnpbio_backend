@@ -1,7 +1,11 @@
 <template>
   <div>
-    <p class="h3 d-flex"><i class="bi bi-check-square-fill"></i> &nbsp;회사소개</p>
-    <hr />
+    <p class="h5 d-flex mt-2">
+      <span style="padding-top: 0px; padding-right: 5px"
+        ><i class="bi bi-square" style="font-size: 20px"></i></span
+      >회사소개
+    </p>
+    <hr class="mb-2" />
     <p><b>회사개요</b></p>
     <p>생명공학의 선구자들인 연구자분들께 최고의 동반자가 되겠습니다.</p>
     <p>

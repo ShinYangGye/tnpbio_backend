@@ -1,19 +1,34 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { useProductStore } from '../../stores/productStore';
 const router = useRouter();
 const productStore = useProductStore();
+
+const route = useRoute();
+const mainId = route.query.mainId;
+const subId = route.query.subId;
+
+if (mainId != undefined || mainId != null) {
+  productStore.state.menuMainId = mainId;
+} else {
+  productStore.state.menuMainId = 0;
+}
+
+if (subId != undefined || subId != null) {
+  productStore.state.menuSubId = subId;
+} else {
+  productStore.state.menuSubId = 0;
+}
+
 productStore.doGetMenus();
 
 const setMenuInfo = (menu) => {
-  router.push({ name: 'product' });
+  productStore.state.menuSubDetail = {};
+  productStore.state.menuMainId = menu.id;
 
-  productStore.state.menuDetail.name = menu.menuName;
-  productStore.state.menuDetail.info = menu.menuInfo;
-  productStore.state.menuDetail.fileName = menu.file.savedFileName;
-  productStore.state.menuDetail.menuSub = menu.menuSub;
-
-  console.log(productStore.state.menuDetail);
+  productStore.state.menuSubId = 0;
+  router.push({ name: 'product', query: { mainId: menu.id } });
+  productStore.doGetMenuInfo(menu);
 };
 </script>
 <template>

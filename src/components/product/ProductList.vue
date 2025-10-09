@@ -1,4 +1,3 @@
-<script setup></script>
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
 import { useProductStore } from '../../stores/productStore';
@@ -8,11 +7,15 @@ const productStore = useProductStore();
 const router = useRouter();
 const route = useRoute();
 
-console.log(route.params.subId);
-productStore.doGetProducts(route.params.subId);
+const mainId = route.query.mainId;
+const subId = route.query.subId;
+
+productStore.state.menuMainId = mainId;
+productStore.state.menuSubId = subId;
+productStore.doGetProducts(subId);
 
 const goDetail = (id) => {
-  router.push({ name: 'product-detail', params: { id } });
+  router.push({ name: 'product-detail', query: { mainId, subId, id } });
 };
 </script>
 <template>
@@ -26,8 +29,8 @@ const goDetail = (id) => {
         </div>
 
         <div class="card-body text-start">
-          <h5 class="card-title">{{ prd.productName }}</h5>
-          <p class="card-text">{{ prd.productBrand }}</p>
+          <h5 class="card-title text-truncate">{{ prd.productName }}</h5>
+          <p class="card-text text-truncate">{{ prd.productBrand }}</p>
         </div>
         <div class="card-footer text-end p-1">
           <small class="text-body-secondary"

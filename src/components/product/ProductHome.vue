@@ -1,19 +1,25 @@
 <script setup></script>
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useProductStore } from '../../stores/productStore';
 const baseURL = import.meta.env.VITE_APP_API;
 const productStore = useProductStore();
-// productStore.doGetMenus();
 
 const router = useRouter();
+const route = useRoute();
 
 const goProductList = (subId) => {
-  router.push({ name: 'product-list', params: { subId } });
+  let mainId = route.query.mainId;
+
+  if (mainId == null || mainId == undefined) {
+    mainId = productStore.state.menus[0].id;
+  }
+
+  router.push({ name: 'product-list', query: { mainId: mainId, subId: subId } });
 };
 </script>
 <template>
-  <div class="card">
+  <div class="card" v-if="productStore.state.menus.length > 0">
     <div class="row g-0">
       <div class="col-md-4 p-2">
         <img
@@ -23,7 +29,7 @@ const goProductList = (subId) => {
       </div>
       <div class="col-md-8">
         <div class="card-body text-start">
-          <p class="card-text">
+          <p class="card-text wrap-text">
             {{ productStore.state.menuDetail.info }}
           </p>
         </div>
@@ -39,7 +45,7 @@ const goProductList = (subId) => {
         >
           <button
             type="button"
-            class="btn btn-outline-secondary rounded-0 text-start"
+            class="btn btn-sm btn-outline-secondary rounded-1 text-start"
             @click="goProductList(sub.id)"
           >
             {{ sub.menuName }}

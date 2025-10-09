@@ -19,10 +19,8 @@ const route = useRoute();
       <div class="container marketing">
         <router-view />
       </div>
-
-      <!-- FOOTER -->
-      <CommFooter />
-      <!-- // FOOTER -->
     </main>
+
+    <CommFooter />
   </div>
 </template>

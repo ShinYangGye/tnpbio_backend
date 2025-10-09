@@ -13,8 +13,12 @@ const getBrandLisLetters = (brand) => {
 
 <template>
   <div>
-    <p class="h3 d-flex"><i class="bi bi-check-square-fill"></i> &nbsp;취급브랜드</p>
-    <hr />
+    <p class="h5 d-flex mt-2">
+      <span style="padding-top: 0px; padding-right: 5px"
+        ><i class="bi bi-square" style="font-size: 20px"></i></span
+      >취급 브랜드
+    </p>
+    <hr class="mb-2" />
     <div class="text-center mb-2">
       <button
         type="button"
@@ -36,13 +40,13 @@ const getBrandLisLetters = (brand) => {
     </div>
 
     <!-- 브랜드 목록 ----------------------------------->
-    <div class="card mb-1 d-none d-md-block text-bg-secondary">
+    <div class="card mb-1 d-none d-md-block text-bg-secondary rounded-0">
       <div class="row g-0 text-center">
         <div class="col-md-10">제조사/제품</div>
         <div class="col-md-2">바로가기</div>
       </div>
     </div>
-    <div class="card mb-1" v-for="(item, index) in brandStore.state.items" :key="index">
+    <div class="card mb-1 rounded-0" v-for="(item, index) in brandStore.state.items" :key="index">
       <div class="row g-0">
         <div class="col-md-2 p-1" th:if="${item.file}">
           <a th:href="${item.brandUrl}" target="_blank">

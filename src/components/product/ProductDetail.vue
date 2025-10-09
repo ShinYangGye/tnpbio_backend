@@ -1,25 +1,18 @@
 <script setup></script>
 <script setup>
-import { computed } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useProductStore } from '../../stores/productStore';
 const baseURL = import.meta.env.VITE_APP_API;
-const router = useRouter();
 const route = useRoute();
+const id = route.query.id;
 
 const productStore = useProductStore();
-productStore.doGetMenus();
-productStore.doGetProductDetail(route.params.id);
-
-const replaceString = computed(() => {
-  return productStore.state.productDetail.productContents.replace(/(?:\r\n|\r|\n)/g, '<br />');
-});
+productStore.doGetProductDetail(id);
 </script>
 <template>
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
       <!-- 상품 이미지 ---------->
-
       <div class="carousel slide bg-transparent" id="carouselDemo">
         <div class="carousel-inner">
           <div
@@ -48,30 +41,9 @@ const replaceString = computed(() => {
               <img :src="`${baseURL}/product/image/${file.savedFileName}`" />
             </button>
           </div>
-          <!--
-          <div v-for="(file, index) in productStore.state.productDetail.files" :key="index">
-            <button
-              type="button"
-              data-bs-target="#carouselDemo"
-              :data-bs-slide-to="index"
-              v-if="file.kind == 'sub'"
-            >
-              <img
-                :src="`${baseURL}/product/image/${file.savedFileName}`"
-                v-if="file.kind == 'sub'"
-              />
-            </button>
-          </div>
-
-
-            <button type="button" data-bs-target="#carouselDemo" data-bs-slide-to="1">
-              <img
-                src="https://images.ctfassets.net/hrltx12pl8hq/1qoVFqqABKxtFRMkUh0v6l/6a9bbdc723ac373f4e44400de87997b2/shutterstock_1734177410__1_.jpg?fit=fill&w=144&h=144&fm=webp"
-              />
-            </button>
----->
         </div>
       </div>
+      <!-- // 상품 이미지 ---------->
     </div>
     <div class="col">
       <div>
@@ -113,6 +85,14 @@ const replaceString = computed(() => {
                 </li>
               </ol>
             </div>
+          </li>
+          <li class="list-group-item text-end">
+            <router-link
+              type="button"
+              class="btn btn-sm btn-secondary bg-danger"
+              :to="{ name: 'price' }"
+              >견적의뢰</router-link
+            >
           </li>
         </ol>
       </div>
@@ -183,70 +163,6 @@ const replaceString = computed(() => {
       </div>
     </div>
   </div>
-  <!-- 상품 이미지 ---------->
-  <!--
-          <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="https://images.ctfassets.net/hrltx12pl8hq/2ppk3Ug2z6oFMZY5z8WXnx/75af41f13939954c93de0ff8c1972612/shutterstock_1922207966.jpg?fit=fill&w=144&h=144&fm=webp"
-                  class="w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="https://images.ctfassets.net/hrltx12pl8hq/1qoVFqqABKxtFRMkUh0v6l/6a9bbdc723ac373f4e44400de87997b2/shutterstock_1734177410__1_.jpg?fit=fill&w=144&h=144&fm=webp"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="https://images.ctfassets.net/hrltx12pl8hq/go6z2gBaTMDvTrtoOipOw/3b9d21ff7003ca392a2daeb569d629fc/shutterstock_1802211250.jpg?fit=fill&w=144&h=144&fm=webp"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-            </div>
-
-            <div class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              >
-                <img
-                  src="https://images.ctfassets.net/hrltx12pl8hq/2ppk3Ug2z6oFMZY5z8WXnx/75af41f13939954c93de0ff8c1972612/shutterstock_1922207966.jpg?fit=fill&w=144&h=144&fm=webp"
-                />
-              </button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              >
-                <img
-                  src="https://images.ctfassets.net/hrltx12pl8hq/1qoVFqqABKxtFRMkUh0v6l/6a9bbdc723ac373f4e44400de87997b2/shutterstock_1734177410__1_.jpg?fit=fill&w=144&h=144&fm=webp"
-                />
-              </button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              >
-                <img
-                  src="https://images.ctfassets.net/hrltx12pl8hq/go6z2gBaTMDvTrtoOipOw/3b9d21ff7003ca392a2daeb569d629fc/shutterstock_1802211250.jpg?fit=fill&w=144&h=144&fm=webp"
-                />
-              </button>
-            </div>
-          </div>
-          -->
-  <!-- // 상품 이미지 ---------->
 </template>
 
 <style scoped>
@@ -271,9 +187,5 @@ const replaceString = computed(() => {
 
 .nav-link.active {
   background-color: #ccc;
-}
-
-.wrap-text {
-  white-space: pre-wrap;
 }
 </style>

@@ -15,10 +15,12 @@ const savePrice = () => {
 </script>
 <template>
   <div>
-    <p class="h4 d-flex">
-      <i class="bi bi-check-square-fill" style="font-size: 20px"></i> &nbsp;견적의뢰
+    <p class="h5 d-flex mt-2">
+      <span style="padding-top: 0px; padding-right: 5px"
+        ><i class="bi bi-square" style="font-size: 20px"></i></span
+      >견적의뢰
     </p>
-    <hr />
+    <hr class="mb-2" />
     <p>
       <strong>
         이름, 답변 받으실 연락처를 남겨주시면 최대한 빠르게 답변드리도록 하겠습니다. <br />

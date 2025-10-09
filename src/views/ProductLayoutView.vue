@@ -1,50 +1,26 @@
 <script setup>
-import { useRouter } from 'vue-router';
 import ProductNavbar from '@/components/product/ProductNavbar.vue';
-import { useProductStore } from '../stores/productStore';
-const productStore = useProductStore();
-const router = useRouter();
-productStore.doGetMenus();
-
-const setMenuInfo = (menu) => {
-  router.push({ name: 'product' });
-
-  productStore.state.menuDetail.name = menu.menuName;
-  productStore.state.menuDetail.info = menu.menuInfo;
-  productStore.state.menuDetail.fileName = menu.file.savedFileName;
-  productStore.state.menuDetail.menuSub = menu.menuSub;
-
-  console.log(productStore.state.menuDetail);
-};
+import ProductLeftMenu from '@/components/product/ProductLeftMenu.vue';
+// import { useProductStore } from '../stores/productStore';
+// const productStore = useProductStore();
+// productStore.doGetMenus();
 </script>
 <template>
   <div>
-    <div class="h3 d-flex"><i class="bi bi-check-square-fill"></i> &nbsp;분야별 제품정보</div>
-
-    <hr />
+    <p class="h5 d-flex mt-2">
+      <span style="padding-top: 0px; padding-right: 5px"
+        ><i class="bi bi-square" style="font-size: 20px"></i></span
+      >분야별 제품정보
+    </p>
+    <hr class="mb-2" />
 
     <div class="container text-center">
       <div class="row">
-        <!-- 제품 왼쪽 메뉴 메뉴 -->
-        <div class="col-sm-12 col-md-3 bg-dark-subtle p-1 rounded-1">
-          <div
-            class="btn-group-vertical w-100 rounded-1"
-            role="group"
-            aria-label="Vertical button group"
-          >
-            <button
-              class="btn btn-secondary text-start border-light"
-              type="button"
-              v-for="(menu, index) in productStore.state.menus"
-              :key="index"
-              @click="setMenuInfo(menu)"
-            >
-              {{ menu.menuName }}
-            </button>
-          </div>
-        </div>
-        <!-- // 제품 왼쪽 메뉴 메뉴 -->
+        <ProductLeftMenu />
         <div class="col-sm-12 col-md-9">
+          <div>
+            <ProductNavbar />
+          </div>
           <div>
             <router-view />
           </div>

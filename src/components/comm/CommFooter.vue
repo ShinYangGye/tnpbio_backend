@@ -1,11 +1,5 @@
 <template>
-  <div>
-    <footer class="container">
-      <hr class="featurette-divider" />
-      <p class="float-end">
-        <a href="#">Back to top</a>
-      </p>
-      <p>&copy;2025. TNP BIO Co. all rights reserved.</p>
-    </footer>
+  <div class="fixed-bottom container-fluid bg-light text-center">
+    <div><p>&copy;2025. T&P BIO Co. all rights reserved.</p></div>
   </div>
 </template>

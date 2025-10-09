@@ -22,12 +22,12 @@ const router = createRouter({
           component: () => import('../views/ProductHomeView.vue'),
         },
         {
-          path: '/product/:subId/list',
+          path: '/product/list',
           name: 'product-list',
           component: () => import('../views/ProductListView.vue'),
         },
         {
-          path: '/product/:id/detail',
+          path: '/product/detail',
           name: 'product-detail',
           component: () => import('../views/ProductDetailView.vue'),
         },
@@ -61,6 +61,13 @@ const router = createRouter({
       name: 'company',
       component: () => import('../views/CompanyView.vue'),
     },
+    /*
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'blank',
+      component: () => import('../views/BlankView.vue'),
+    },
+    */
   ],
 });
 
