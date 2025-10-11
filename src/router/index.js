@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+//import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
   scrollBehavior() {
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/event',
       name: 'event',
       component: () => import('../views/EventView.vue'),
+    },
+    {
+      path: '/event/detail',
+      name: 'event-detail',
+      component: () => import('../views/EventDetailView.vue'),
     },
     {
       path: '/price',

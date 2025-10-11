@@ -6,6 +6,9 @@ const savePrice = async (priceObj) => await axiosInterceptor.post('/price/save',
 // 이벤트 조회
 const getEvents = async () => await axiosInterceptor.get(`/event/list`);
 
+// 이벤트 단건 조회
+const getEventDetail = async (id) => await axiosInterceptor.get(`/event/${id}/detail`);
+
 // 이벤트 상위 3 조회
 const getEventTop = async () => await axiosInterceptor.get(`/event/list-top`);
 
@@ -37,6 +40,7 @@ const getBannerList = async () => await axiosInterceptor.get(`/banner/list`);
 export {
   savePrice,
   getEvents,
+  getEventDetail,
   getEventTop,
   getBrandLetters,
   getBrandList,

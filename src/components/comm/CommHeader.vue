@@ -3,7 +3,7 @@
 <template>
   <div class="container p-1">
     <RouterLink class="navbar-brand" :to="{ name: 'home' }"
-      ><img src="@/assets/images/tnp_logo.png" style="width: 100px"
+      ><img src="@/assets/images/tnp_logo_sm.png" style="width: 100px"
     /></RouterLink>
   </div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">

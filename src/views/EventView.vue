@@ -28,7 +28,8 @@ eventStore.doGetEvents();
             :aria-controls="`flush-collapseOne-${index}`"
             style="border-bottom: 1px solid gray"
           >
-            {{ item.title }}
+            <i class="bi bi-asterisk" style="margin-right: 5px"></i>
+            <strong>{{ item.title }}</strong>
           </button>
         </h2>
         <div
@@ -39,10 +40,26 @@ eventStore.doGetEvents();
           <div class="accordion-body wrap-text">
             {{ item.contents }}
           </div>
+          <!--
           <div class="accordion-body" v-if="item.file">
-            <a :href="`${baseURL}/event/attach/${item.id}`"
+            <a :href="`${baseURL}/event/attach/${item.id}`" target="_blank"
               >{{ item.file.orgFileName }}
               <span class="badge text-bg-secondary">이벤트 파일 다운로드</span></a
+            >
+          </div>
+           -->
+          <div class="accordion-body text-center" v-if="item.imgFile">
+            <img
+              :src="`${baseURL}/event/files/${item.imgFile.savedFileName}`"
+              style="max-width: 100%"
+            />
+          </div>
+          <div class="accordion-body text-center" v-if="item.file">
+            <a
+              class="btn btn-sm btn-danger"
+              :href="`${baseURL}/event/files/${item.file.savedFileName}`"
+              target="_blank"
+              >이벤트 내용 상세보기</a
             >
           </div>
         </div>

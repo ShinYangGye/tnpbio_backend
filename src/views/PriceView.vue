@@ -92,7 +92,7 @@ const savePrice = () => {
         ></textarea>
       </div>
       <div class="d-grid gap-2">
-        <button class="btn btn-secondary" type="button" @click="savePrice()" id="btn_price">
+        <button class="btn btn-sm btn-danger" type="button" @click="savePrice()" id="btn_price">
           의뢰하기
         </button>
       </div>

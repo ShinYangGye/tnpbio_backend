@@ -1,16 +1,14 @@
-<script setup></script>
 <script setup>
 import { useRoute } from 'vue-router';
 import { useProductStore } from '../../stores/productStore';
 const baseURL = import.meta.env.VITE_APP_API;
 const route = useRoute();
 const id = route.query.id;
-
 const productStore = useProductStore();
 productStore.doGetProductDetail(id);
 </script>
 <template>
-  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="row row-cols-1 row-cols-md-2 g-1">
     <div class="col">
       <!-- 상품 이미지 ---------->
       <div class="carousel slide bg-transparent" id="carouselDemo">
@@ -47,7 +45,7 @@ productStore.doGetProductDetail(id);
     </div>
     <div class="col">
       <div>
-        <ol class="list-group">
+        <ol class="list-group rounded-0">
           <li class="list-group-item d-flex text-start">
             <div class="">
               <div class="fw-bold">제품명</div>
@@ -173,6 +171,7 @@ productStore.doGetProductDetail(id);
 }
 .carousel-indicators button {
   width: max-content !important;
+  margin: 2px;
 }
 .carousel-indicators {
   position: unset;
